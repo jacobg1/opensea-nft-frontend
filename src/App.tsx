@@ -1,15 +1,20 @@
-import Filters from './components/Filters';
-import logo from './logo.svg';
-import './App.css';
-import { setFilter } from './redux/state/filterSlice';
-import { useDispatch } from 'react-redux';
-import { fetchArt } from './redux/state/artSlice';
-import { useAppDispatch, useAppSelector, useFilterPayload } from './redux/hooks';
+import Filters from "./components/Filters";
+import logo from "./logo.svg";
+import "./App.css";
+import { setFilter } from "./redux/state/filterSlice";
+import { useDispatch } from "react-redux";
+import { fetchArt } from "./redux/state/artSlice";
+import {
+  useAppDispatch,
+  useAppSelector,
+  useFilterPayload,
+} from "./redux/hooks";
+import Display from "./components/Display";
 
 function App() {
-	const dispatch = useAppDispatch();
-	
-	const getFilters = useFilterPayload();
+  const dispatch = useAppDispatch();
+
+  const getFilters = useFilterPayload();
 
   return (
     <div className="App">
@@ -26,9 +31,10 @@ function App() {
         >
           Learn React
         </a>
-				<h1 onClick={() => dispatch(fetchArt(getFilters))}>TEST</h1>
+        <h1 onClick={() => dispatch(fetchArt(getFilters))}>TEST</h1>
       </header>
-			<Filters />
+      <Filters />
+      <Display />
     </div>
   );
 }
