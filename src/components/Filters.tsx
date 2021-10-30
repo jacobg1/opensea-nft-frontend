@@ -6,7 +6,6 @@ import { SelectChange, InputChange } from '../redux/types'
 import Input from "./Input";
 import Dropdown from "./Dropdown";
 
-
 interface FilterHandler {
 	(e: SelectChange | InputChange, label: string): void
 }
@@ -21,26 +20,22 @@ function Filters() {
 
   return (
     <ul>
-      {getFilters.map(({ type, label, value, options }) => {
+      {getFilters.map(({ filterId, options, ...rest }, i) => {
         if (options) {
           return (
             <Dropdown
-              key={`${type}-${label}`}
-              label={label}
+              key={`${filterId}-${i}`}
               handler={handler}
-              type={type}
-              value={value}
-              options={options}
+							options={options}
+							{...rest}
             />
           );
         }
         return (
           <Input
-            key={`${type}-${label}`}
-            label={label}
+            key={`${filterId}-${i}`}
             handler={handler}
-            type={type}
-            value={value}
+						{...rest}
           />
         );
       })}

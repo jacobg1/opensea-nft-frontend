@@ -10,7 +10,7 @@ function App() {
 	const dispatch = useAppDispatch();
 	
 	const getFilters = useFilterPayload();
-	console.log(getFilters)
+
   return (
     <div className="App">
       <header className="App-header">
