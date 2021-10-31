@@ -1,15 +1,25 @@
-import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { useAppSelector } from "../redux/hooks";
 
 function Display() {
-  const getNfts = useAppSelector((state) => state.art.nfts);
+  const artState = useAppSelector((state) => state.art);
 
-  const nfts = getNfts.length
-    ? getNfts.map((n) => {
-        return <h1 key={n.id}>{n.id}</h1>;
-      })
-    : null;
+  const { loading, nfts } = artState;
 
-  return <div>{nfts}</div>;
+  if (loading) {
+    return <div>LOADING</div>;
+  }
+
+  if (nfts.length) {
+    return (
+      <div>
+        {nfts.map((n) => {
+          return <h1 key={n.id}>{n.id}</h1>;
+        })}
+      </div>
+    );
+  }
+
+  return null;
 }
 
 export default Display;

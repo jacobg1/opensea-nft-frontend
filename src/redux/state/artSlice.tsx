@@ -1,6 +1,8 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 import { PayloadFilters } from "../types";
 
+type Nfts = Record<string, any>[];
+
 export const fetchArt = createAsyncThunk(
   "art/fetchArtFromFilters",
   async (filters: PayloadFilters) => {
@@ -11,12 +13,12 @@ export const fetchArt = createAsyncThunk(
         body: JSON.stringify(filters),
       }
     );
-    return response.json();
+    return response.json() as Promise<Nfts>;
   }
 );
 
 interface ArtState {
-  nfts: Record<string, any>[];
+  nfts: Nfts;
   loading: boolean;
   error: Error | {};
 }
@@ -32,7 +34,7 @@ const artSlice = createSlice({
     },
 
     // Success
-    [fetchArt.fulfilled.type]: (state, action) => {
+    [fetchArt.fulfilled.type]: (state, action: PayloadAction<Nfts>) => {
       state.nfts = action.payload;
       state.loading = false;
     },

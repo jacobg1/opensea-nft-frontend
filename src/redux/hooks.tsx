@@ -1,4 +1,6 @@
+import { useEffect } from "react";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+import { fetchArt } from "./state/artSlice";
 import type { RootState, AppDispatch } from "./store";
 import { PayloadFilters } from "./types";
 
@@ -15,4 +17,12 @@ export const useFilterPayload = () => {
       [curr.filterId]: curr.value,
     };
   }, {} as PayloadFilters);
+};
+
+// Handle initial nft fetch
+export const useLoadArt = () => {
+  const dispatch = useDispatch();
+  const getFilters = useFilterPayload();
+
+  dispatch(fetchArt(getFilters));
 };
