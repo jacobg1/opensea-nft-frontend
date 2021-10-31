@@ -1,36 +1,40 @@
-import { useEffect, useState } from "react";
-import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
-import { fetchArt } from "./state/artSlice";
-import type { RootState, AppDispatch } from "./store";
-import { PayloadFilters } from "./types";
+import { useEffect, useState } from 'react'
+import {
+  TypedUseSelectorHook,
+  useDispatch,
+  useSelector,
+} from 'react-redux'
+import { fetchArt } from './state/artSlice'
+import type { RootState, AppDispatch } from './store'
+import { PayloadFilters } from './types'
 
-export const useAppDispatch = () => useDispatch<AppDispatch>();
-export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
+export const useAppDispatch = () => useDispatch<AppDispatch>()
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
 
 // Generate payload for api call
 export const useFilterPayload = () => {
-  const getFilters = useAppSelector((state) => state.filters);
+  const getFilters = useAppSelector((state) => state.filters)
 
   return getFilters.reduce((acc, curr) => {
     return {
       ...acc,
       [curr.filterId]: curr.value,
-    };
-  }, {} as PayloadFilters);
-};
+    }
+  }, {} as PayloadFilters)
+}
 
 // Handle initial nft fetch
 export const useLoadArt = () => {
-  const [isMounted, setMounted] = useState(false);
+  const [isMounted, setMounted] = useState(false)
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  const getFilters = useFilterPayload();
+  const getFilters = useFilterPayload()
 
   useEffect(() => {
     if (!isMounted) {
-      setMounted(true);
-      dispatch(fetchArt(getFilters));
+      setMounted(true)
+      dispatch(fetchArt(getFilters))
     }
-  }, [isMounted, dispatch, getFilters]);
-};
+  }, [isMounted, dispatch, getFilters])
+}

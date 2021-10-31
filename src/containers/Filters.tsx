@@ -1,22 +1,22 @@
-import { useAppDispatch, useAppSelector } from "../redux/hooks";
-import { setFilter } from "../redux/state/filterSlice";
+import { useAppDispatch, useAppSelector } from '../redux/hooks'
+import { setFilter } from '../redux/state/filterSlice'
 
-import { SelectChange, InputChange } from "../redux/types";
+import { SelectChange, InputChange } from '../redux/types'
 
-import Input from "../components/Input";
-import Dropdown from "../components/Dropdown";
+import Input from '../components/Input'
+import Dropdown from '../components/Dropdown'
 
 interface FilterHandler {
-  (e: SelectChange | InputChange, label: string): void;
+  (e: SelectChange | InputChange, label: string): void
 }
 
 function Filters() {
-  const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch()
   const handler: FilterHandler = (e, label) => {
-    dispatch(setFilter({ label, value: e.target.value }));
-  };
+    dispatch(setFilter({ label, value: e.target.value }))
+  }
 
-  const getFilters = useAppSelector((state) => state.filters);
+  const getFilters = useAppSelector((state) => state.filters)
 
   return (
     <ul>
@@ -29,12 +29,14 @@ function Filters() {
               options={options}
               {...rest}
             />
-          );
+          )
         }
-        return <Input key={`${filterId}-${i}`} handler={handler} {...rest} />;
+        return (
+          <Input key={`${filterId}-${i}`} handler={handler} {...rest} />
+        )
       })}
     </ul>
-  );
+  )
 }
 
-export default Filters;
+export default Filters

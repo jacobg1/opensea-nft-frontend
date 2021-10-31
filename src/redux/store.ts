@@ -1,16 +1,16 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore } from '@reduxjs/toolkit'
 
-import filterSlice from "./state/filterSlice";
-import artSlice from "./state/artSlice";
+import filterSlice from './state/filterSlice'
+import artSlice from './state/artSlice'
 
 const store = configureStore({
   reducer: {
     filters: filterSlice,
     art: artSlice,
   },
-});
+})
 
-export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch
 
-export default store;
+export default store

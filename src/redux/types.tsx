@@ -1,12 +1,12 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent } from 'react'
 
-export type SelectChange = ChangeEvent<HTMLSelectElement>;
-export type InputChange = ChangeEvent<HTMLInputElement>;
+export type SelectChange = ChangeEvent<HTMLSelectElement>
+export type InputChange = ChangeEvent<HTMLInputElement>
 
-export type ISingleNft = Record<string, any>;
+export type ISingleNft = Record<string, any>
 
 export interface PayloadFilters {
-  order_direction: string;
-  offset: string;
-  limit: string;
+  order_direction: string
+  offset: string
+  limit: string
 }
