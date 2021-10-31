@@ -17,9 +17,10 @@ const initialState: FilterState[] = [
   },
   {
     filterId: 'limit',
-    type: 'number',
-    label: 'limit',
-    value: '20',
+    type: 'dropdown',
+    label: '# per page',
+    value: '15',
+    options: ['15', '20', '30', '50'],
   },
   {
     filterId: 'order_direction',

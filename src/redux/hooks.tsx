@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import {
   TypedUseSelectorHook,
   useDispatch,
@@ -25,16 +25,10 @@ export const useFilterPayload = () => {
 
 // Handle initial nft fetch
 export const useLoadArt = () => {
-  const [isMounted, setMounted] = useState(false)
-
-  const dispatch = useDispatch()
-
+  const dispatch = useAppDispatch()
   const getFilters = useFilterPayload()
 
   useEffect(() => {
-    if (!isMounted) {
-      setMounted(true)
-      dispatch(fetchArt(getFilters))
-    }
-  }, [isMounted, dispatch, getFilters])
+    dispatch(fetchArt(getFilters))
+  }, [dispatch, getFilters])
 }
