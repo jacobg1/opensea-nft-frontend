@@ -13,9 +13,9 @@ function Display() {
   if (nfts.length) {
     return (
       <div>
-        {nfts.map(({ id, ...rest }) => {
-          return <SingleNft key={id.toString()} {...rest} />
-        })}
+        {nfts.map(({ id, ...rest }) => (
+          <SingleNft key={id.toString()} {...rest} />
+        ))}
       </div>
     )
   }
