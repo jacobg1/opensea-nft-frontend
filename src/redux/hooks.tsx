@@ -21,14 +21,16 @@ export const useFilterPayload = () => {
 
 // Handle initial nft fetch
 export const useLoadArt = () => {
-	const [isMounted, setMounted] = useState(false);
-  const dispatch = useDispatch();
-	const getFilters = useFilterPayload();
+  const [isMounted, setMounted] = useState(false);
 
-	useEffect(() => {
-		if(!isMounted) {
-			setMounted(true)
-			dispatch(fetchArt(getFilters));
-		}
-	}, [isMounted, dispatch, getFilters])
+  const dispatch = useDispatch();
+
+  const getFilters = useFilterPayload();
+
+  useEffect(() => {
+    if (!isMounted) {
+      setMounted(true);
+      dispatch(fetchArt(getFilters));
+    }
+  }, [isMounted, dispatch, getFilters]);
 };

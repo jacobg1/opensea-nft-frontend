@@ -14,7 +14,7 @@ function Filters() {
   const dispatch = useAppDispatch();
   const handler: FilterHandler = (e, label) => {
     dispatch(setFilter({ label, value: e.target.value }));
-  };   
+  };
 
   const getFilters = useAppSelector((state) => state.filters);
 
