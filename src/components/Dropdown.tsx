@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent } from "react";
+import { ChangeEvent } from "react";
 
 interface DropdownProps {
   handler: (e: ChangeEvent<HTMLSelectElement>, label: string) => void;

@@ -1,7 +1,7 @@
 import "./App.css";
 import { useLoadArt } from "./redux/hooks";
-import Display from "./components/Display";
-import Filters from "./components/Filters";
+import Display from "./containers/Display";
+import Filters from "./containers/Filters";
 
 function App() {
   useLoadArt();

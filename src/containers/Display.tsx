@@ -4,7 +4,7 @@ function Display() {
   const artState = useAppSelector((state) => state.art);
 
   const { loading, nfts } = artState;
-
+	
   if (loading) {
     return <div>LOADING</div>;
   }

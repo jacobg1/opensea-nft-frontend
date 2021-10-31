@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { fetchArt } from "./state/artSlice";
 import type { RootState, AppDispatch } from "./store";
@@ -21,8 +21,14 @@ export const useFilterPayload = () => {
 
 // Handle initial nft fetch
 export const useLoadArt = () => {
+	const [isMounted, setMounted] = useState(false);
   const dispatch = useDispatch();
-  const getFilters = useFilterPayload();
+	const getFilters = useFilterPayload();
 
-  dispatch(fetchArt(getFilters));
+	useEffect(() => {
+		if(!isMounted) {
+			setMounted(true)
+			dispatch(fetchArt(getFilters));
+		}
+	}, [isMounted, dispatch, getFilters])
 };
